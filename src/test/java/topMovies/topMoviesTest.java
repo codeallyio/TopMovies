@@ -52,8 +52,8 @@ class topMoviesTest {
         runTest(movies, false);
     }
 
-    private List<Movie> getFavouriteMoviesCheck(List<Movie> moviesList) {
-        Movie movies[] = new Movie[6];
+    private List<Movie> getBestMoviesCorrect(List<Movie> moviesList) {
+        Movie[] movies = new Movie[6];
         for (int i = 0; i < moviesList.size(); i++) {
             int pos = Math.min(i, 5);
             movies[pos] = moviesList.get(i);
@@ -72,14 +72,14 @@ class topMoviesTest {
 
     private void runTest(List<Movie> movies, boolean checkTitle) {
         Main main = new Main();
-        List<Movie> favouriteMovies = getFavouriteMoviesCheck(movies);
-        List<Movie> candidateFavouriteMovies = assertTimeoutPreemptively(Duration.ofSeconds(1),
-                () -> main.getFavouriteMovies(new ArrayList<>(movies)), "Test timeout");
+        List<Movie> bestMovies = getBestMoviesCorrect(movies);
+        List<Movie> candidateBestMovies = assertTimeoutPreemptively(Duration.ofSeconds(1),
+                () -> main.getBestMovies(new ArrayList<>(movies)), "Test timeout");
 
         for (int i = 0; i < 5; i++) {
             if (checkTitle)
-                assertTrue(favouriteMovies.get(i).getTitle().equals(candidateFavouriteMovies.get(i).getTitle()));
-            assertEquals(favouriteMovies.get(i).getRating(), candidateFavouriteMovies.get(i).getRating());
+                assertTrue(bestMovies.get(i).getTitle().equals(candidateBestMovies.get(i).getTitle()));
+            assertEquals(bestMovies.get(i).getRating(), candidateBestMovies.get(i).getRating());
         }
     }
 

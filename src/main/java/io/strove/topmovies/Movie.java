@@ -1,4 +1,4 @@
-package topMovies;
+package io.strove.topmovies;
 
 public class Movie {
     private String title;

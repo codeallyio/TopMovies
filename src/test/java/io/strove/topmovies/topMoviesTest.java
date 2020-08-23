@@ -1,4 +1,4 @@
-package topMovies;
+package io.strove.topmovies;
 
 import org.junit.jupiter.api.Test;
 

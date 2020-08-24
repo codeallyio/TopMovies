@@ -10,7 +10,9 @@ import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class topMoviesTest {
+public class topMoviesTest {
+    private static final long TEST_TIMEOUT_MS = 1000;
+
     @Test
     public void simpleTest() {
         List<Movie> movies = Arrays.asList(new Movie("Star Wars - The Phantom Menace", 4.2),
@@ -73,7 +75,7 @@ class topMoviesTest {
     private void runTest(List<Movie> movies, boolean checkTitle) {
         Main main = new Main();
         List<Movie> bestMovies = getBestMoviesCorrect(movies);
-        List<Movie> candidateBestMovies = assertTimeoutPreemptively(Duration.ofSeconds(1),
+        List<Movie> candidateBestMovies = assertTimeoutPreemptively(Duration.ofMillis(TEST_TIMEOUT_MS),
                 () -> main.getBestMovies(new ArrayList<>(movies)), "Test timeout");
 
         for (int i = 0; i < 5; i++) {

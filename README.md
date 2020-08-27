@@ -5,7 +5,10 @@ starting from the best rated movie.
 
 #### Test your solution
 You can run your program on example data to check if it compiles and works properly.
-Just click right on file name and then run.
+Run in project directory
+```
+./run.sh
+```
 
 ### Testing candidate solution 
 
